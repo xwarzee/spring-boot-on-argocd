@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: spring-boot-app
-        image: harshal1098/docker-demo:latest
+        image: 989896714915.dkr.ecr.ap-south-1.amazonaws.com/springboot:latest
         ports:
         - containerPort: 8080
 
@@ -27,9 +27,9 @@ kind: Service
 metadata:
   name: springboot-svc
 spec:
-  type: NodePort
+  type: LoadBalancer
   ports:
     - port: 8080
-      targetPort: 8080
+      name: http
   selector:
     app: spring-boot-app		
