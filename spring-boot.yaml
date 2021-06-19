@@ -1,10 +1,7 @@
-####deployment yaml###########
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: spring-boot-app
-  labels:
-    app: spring-boot-app
 spec:
   replicas: 3
   selector:
@@ -18,19 +15,20 @@ spec:
       containers:
       - name: spring-boot-app
         image: 989896714915.dkr.ecr.ap-south-1.amazonaws.com/springboot:latest
+        imagePullPolicy: Always
         ports:
         - containerPort: 8080
-
-########Service yaml ################
-
+# service type loadbalancer
+---
 apiVersion: v1
 kind: Service
 metadata:
-  name: springboot-svc
+  name: spring-boot-svc
 spec:
-  type: LoadBalancer
-  ports:
-    - port: 8080
-      name: http
   selector:
-    app: spring-boot-app		
+    app: spring-boot-app
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+  type: LoadBalancer
