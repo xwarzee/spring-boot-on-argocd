@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: spring-boot-app
-        image: gcr.io/analog-sum-329708/springboot:10
+        image: gcr.io/analog-sum-329708/springboot:19
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
