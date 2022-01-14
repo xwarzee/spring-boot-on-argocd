@@ -1,34 +1,68 @@
 apiVersion: apps/v1
+nalog-sum-329708/springboot.17
 kind: Deployment
+nalog-sum-329708/springboot.17
 metadata:
+nalog-sum-329708/springboot.17
   name: spring-boot-app
+nalog-sum-329708/springboot.17
 spec:
+nalog-sum-329708/springboot.17
   replicas: 3
+nalog-sum-329708/springboot.17
   selector:
+nalog-sum-329708/springboot.17
     matchLabels:
+nalog-sum-329708/springboot.17
       app: spring-boot-app
+nalog-sum-329708/springboot.17
   template:
+nalog-sum-329708/springboot.17
     metadata:
+nalog-sum-329708/springboot.17
       labels:
+nalog-sum-329708/springboot.17
         app: spring-boot-app
+nalog-sum-329708/springboot.17
     spec:
+nalog-sum-329708/springboot.17
       containers:
+nalog-sum-329708/springboot.17
       - name: spring-boot-app
+nalog-sum-329708/springboot.17
         image: gcr.io/analog-sum-329708/springboot:10
+nalog-sum-329708/springboot.17
         imagePullPolicy: Always
+nalog-sum-329708/springboot.17
         ports:
+nalog-sum-329708/springboot.17
         - containerPort: 8080
+nalog-sum-329708/springboot.17
 # service type loadbalancer
+nalog-sum-329708/springboot.17
 ---
+nalog-sum-329708/springboot.17
 apiVersion: v1
+nalog-sum-329708/springboot.17
 kind: Service
+nalog-sum-329708/springboot.17
 metadata:
+nalog-sum-329708/springboot.17
   name: spring-boot-svc
+nalog-sum-329708/springboot.17
 spec:
+nalog-sum-329708/springboot.17
   selector:
+nalog-sum-329708/springboot.17
     app: spring-boot-app
+nalog-sum-329708/springboot.17
   ports:
+nalog-sum-329708/springboot.17
     - protocol: TCP
+nalog-sum-329708/springboot.17
       port: 8080
+nalog-sum-329708/springboot.17
       targetPort: 8080
+nalog-sum-329708/springboot.17
   type: LoadBalancer
+nalog-sum-329708/springboot.17
