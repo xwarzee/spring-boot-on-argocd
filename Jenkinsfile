@@ -11,7 +11,7 @@ node {
         }
     stage('Build image') {
   
-       app = docker.build("<project-id>/springboot")
+       app = docker.build("<gcp-project-id>/springboot")
     }
 
     stage('Push image to gcr') {
@@ -28,7 +28,7 @@ node {
                         def encodedPassword = URLEncoder.encode("$GIT_PASSWORD",'UTF-8')
                         sh "git config user.email katharharshal1@gmail.com"
                         sh "git config user.name harshalkathar"
-                        sh "sed -i 's+<project-id>/springboot.*+<project-id>/springboot:${env.BUILD_NUMBER}+g' spring-boot.yaml"
+                        sh "sed -i 's+<gcp-project-id>/springboot.*+<gcp-project-id>/springboot:${env.BUILD_NUMBER}+g' spring-boot.yaml"
                         sh "git add ."
                         sh "git commit -m 'jenkinsbuild: ${env.BUILD_NUMBER}'"
                         sh "git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/${GIT_USERNAME}/myfirstapp.git HEAD:master"
