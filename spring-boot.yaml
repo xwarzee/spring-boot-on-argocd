@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: spring-boot-app
-        image: gcr.io/focal-grin-348116/springboot:32
+        image: gcr.io/focal-grin-348116/springboot:33
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
